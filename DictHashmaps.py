@@ -9,6 +9,7 @@ from collections import Counter
 
 
 # Dictionaries and Hashmaps
+#
 
 def checkMagazine():
     # input magazine and note
