@@ -13,7 +13,7 @@ import sys
 def hourglassSum():
     # input hourglassSum
     arr = []
-    with open("hourglasssum.txt") as f:
+    with open("Data/hourglasssum.txt") as f:
         for line in f:
             arr.append([int(x) for x in line.split()])
 
@@ -110,5 +110,5 @@ def arrayManipulation():
     return max_el
 
 
-arrayManipulation()
+hourglassSum()
 

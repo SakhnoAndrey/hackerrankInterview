@@ -3,6 +3,7 @@ import os
 import random
 import re
 import sys
+from functools import cmp_to_key
 
 
 def countSwaps():
@@ -42,5 +43,41 @@ def maximumToys():
     print(count_max)
     return count_max
 
+class Player:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
 
-maximumToys()
+    def __repr__(self):
+        return "{0} {1}".format(self.name, str(self.score))
+
+    def comparator(a, b):
+        if a.score < b.score:
+            return 1
+        elif a.score > b.score:
+            return -1
+        elif a.score == b.score:
+            if a.name < b.name:
+                return -1
+            elif a.name > b.name:
+                return 1
+            else:
+                return 0
+
+
+def sorting_comparator():
+    # Input sorting comparator
+    n = 5
+    data = []
+    with open("Data/sorting_comparator.txt") as f:
+        for line in f:
+            name, score = line.split()
+            score = int(score)
+            player = Player(name, score)
+            data.append(player)
+    data = sorted(data, key=cmp_to_key(Player.comparator))
+    for i in data:
+        print(i.name, i.score)
+
+
+sorting_comparator()
